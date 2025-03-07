@@ -10,6 +10,11 @@ function NewsFeed() {
 
   useEffect(() => {
     fetchNews();
+    const interval = setInterval(() => {
+      console.log("Fetching latest news...");
+      fetchNews();
+    }, 30000); // Fetch news every 30 seconds
+    return () => clearInterval(interval); // Cleanup interval on unmount
   }, []);
 
   const fetchNews = async () => {
@@ -59,5 +64,7 @@ function NewsFeed() {
 }
 
 export default NewsFeed;
+
+
 
 
